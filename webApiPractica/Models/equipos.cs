@@ -4,7 +4,7 @@ namespace webApiPractica.Models
     public class equipos
     {
         [Key]
-        public int id_equipos { get; set; }
+        public int? id_equipos { get; set; }
         public string nombre{ get; set; }
         public string descripcion{ get; set; }
         public int? tipo_equipo_id { get; set; }

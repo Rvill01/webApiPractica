@@ -10,12 +10,25 @@ namespace webApiPractica.Controllers
     public class equiposController : ControllerBase
     {
         private readonly equiposContext _equiposContext;
-        public equiposController(equiposContext equiposContext) 
+        public equiposController(equiposContext equiposContext)
         {
-            _equiposContext= equiposContext;
+            _equiposContext = equiposContext;
 
 
         }
 
+
+        [HttpGet]
+        [Route("GetAll")]
+        public IActionResult Get()
+        {
+            List<equipos> listadoEquipo = (from e in _equiposContext.equipos
+                                           select e).ToList();
+            if (listadoEquipo.Count()== 0)
+            {
+                return NotFound();
+            }
+            return Ok(listadoEquipo);
+        }
     }
 }
